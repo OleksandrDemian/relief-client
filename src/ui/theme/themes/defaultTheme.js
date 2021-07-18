@@ -16,7 +16,7 @@ const fontSizes = {
 const colors = {
 	text: "black",
 	border: "#b9bbbe",
-	borderActive: "grey"
+	borderActive: "cornflowerblue"
 };
 
 const border = {
@@ -30,7 +30,7 @@ const defaultTheme = (isDesktop) => ({
 
 	colors,
 	border,
-	fontSizes,
+	fontSizes: isDesktop ? fontSizes.desktop : fontSizes.mobile,
 
 	section: {
 		padding: "1.8rem"

@@ -1,17 +1,24 @@
-import React from "react";
+import React, {useMemo} from "react";
 import {bindValue} from "../../utils/bindValue";
 import {useProjectsContext} from "../../../context/projects";
+import Select from "../Select";
 
 const ProjectSelect = ({value, onChange}) => {
 	const {projects} = useProjectsContext();
-
+	const options = useMemo(() => {
+		const options = [{value: null, label: "None"}];
+		if (projects) {
+			options.push(...projects.map(p => ({value: p.id, label: p.name})));
+		}
+		return options;
+	}, [projects]);
 	return (
-		<select value={value} onChange={bindValue(onChange)}>
-			<option value={null}>None</option>
-			{projects && projects.map(project => (
-				<option value={project.id}>{project.name}</option>
-			))}
-		</select>
+		<Select
+			native
+			value={value}
+			onChange={bindValue(onChange)}
+			options={options}
+		/>
 	);
 };
 

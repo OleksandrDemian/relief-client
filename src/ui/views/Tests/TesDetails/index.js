@@ -7,6 +7,7 @@ import {useConnect} from "./connect";
 import Input from "../../../components/Input";
 import SectionContainer from "../../../components/SectionContainer";
 import TestStatus from "../TestStatus";
+import Button from "../../../components/Button";
 
 const TestDetails = ({id, testKey, projectId, name, shortDescription, description}) => {
 	const {
@@ -21,15 +22,13 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 				{isDeleting && (
 					<p>Deleting test</p>
 				)}
-				<Link to={`/test/${id}/update`}>
-					<button>Update</button>
-				</Link>
-				<button onClick={onDeleteTest}>Delete</button>
+				<Button component={Link} to={`/test/${id}/update`}>Update</Button>
+				<Button onClick={onDeleteTest}>Delete</Button>
 				<Input
 					label="Test key"
 					disabled={true}
 					maxLength={testKey.length}
-					value={testKey}
+					value={`ID: ${testKey}`}
 				/>
 				<p>{shortDescription}</p>
 				<TestStatus

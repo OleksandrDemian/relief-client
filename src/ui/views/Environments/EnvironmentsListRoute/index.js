@@ -3,9 +3,9 @@ import {useProjectsContext} from "../../../../context/projects";
 import {useEnvironments} from "../../../../dataHooks/useEnvironments";
 import {Heading} from "../../../components/Heading";
 import SectionContainer from "../../../components/SectionContainer";
-import {EnvironmentContainer, EnvironmentsContainer} from "./styled";
+import EnvironmentsList from "../EnvironmentList";
 
-const EnvironmentsList = () => {
+const EnvironmentsListRoute = () => {
 	const {currentProjectId} = useProjectsContext();
 	const {
 		isLoading,
@@ -18,17 +18,12 @@ const EnvironmentsList = () => {
 				<p>Loading</p>
 			)}
 			{!isLoading && data && (
-				<EnvironmentsContainer>
-					{data.map(env => (
-						<EnvironmentContainer>
-							{env.name}
-							<p>{env.description}</p>
-						</EnvironmentContainer>
-					))}
-				</EnvironmentsContainer>
+				<EnvironmentsList
+					environments={data}
+				/>
 			)}
 		</SectionContainer>
 	);
 };
 
-export default EnvironmentsList;
+export default EnvironmentsListRoute;

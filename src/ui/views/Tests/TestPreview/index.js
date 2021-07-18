@@ -2,20 +2,19 @@ import React from "react";
 import {Heading} from "../../../components/Heading";
 import {TestPreviewContainer} from "./styled";
 import {Link} from "react-router-dom";
+import Button from "../../../components/Button";
 
 const TestPreview = ({id, name, shortDescription}) => {
 	return (
 		<TestPreviewContainer>
 			<Heading>{name}</Heading>
 			<p>{shortDescription}</p>
-			<Link to={`/test/${id}`}>
-				<button>
-					Open
-				</button>
-			</Link>
-			<Link to={`/test/${id}/update`}>
-				<button>Update</button>
-			</Link>
+			<Button component={Link} to={`/test/${id}`}>
+				Open
+			</Button>
+			<Button component={Link} to={`/test/${id}/update`}>
+				Update
+			</Button>
 		</TestPreviewContainer>
 	);
 };

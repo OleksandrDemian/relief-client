@@ -3,9 +3,9 @@ import SectionContainer from "../../../components/SectionContainer";
 import {Heading} from "../../../components/Heading";
 import {useConnect} from "./connect";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
-import TestsTable from "./TestsTable";
+import TestsTable from "../TestsTable";
 
-const Tests = () => {
+const TestsRoute = () => {
 	const {
 		tests,
 		isLoading,
@@ -34,4 +34,4 @@ const Tests = () => {
 	);
 };
 
-export default Tests;
+export default TestsRoute;

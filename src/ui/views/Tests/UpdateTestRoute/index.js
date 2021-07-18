@@ -4,7 +4,7 @@ import {Heading} from "../../../components/Heading";
 import CreateTestForm from "../CreateTest/CreateTestForm";
 import React from "react";
 
-const UpdateTest = () => {
+const UpdateTestRoute = () => {
 	const {
 		id,
 		isLoading,
@@ -40,4 +40,4 @@ const UpdateTest = () => {
 	);
 };
 
-export default UpdateTest;
+export default UpdateTestRoute;

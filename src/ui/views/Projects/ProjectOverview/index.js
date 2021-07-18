@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import PendingTests from "./PendingTests";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
 import {useProjectsContext} from "../../../../context/projects";
+import Button from "../../../components/Button";
 
 const ProjectOverview = ({id}) => {
 	const {
@@ -16,11 +17,9 @@ const ProjectOverview = ({id}) => {
 				{currentProject?.name}
 			</Heading>
 			<CreateNewTestButton />
-			<Link to={`/project/${id}/tests`}>
-				<button>
-					Show all test-cases
-				</button>
-			</Link>
+			<Button component={Link} to={`/project/${id}/tests`}>
+				Show all test-cases
+			</Button>
 			<PendingTests />
 		</SectionContainer>
 	);

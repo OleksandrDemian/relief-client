@@ -1,7 +1,7 @@
 import {useConnect} from "./connect";
 import TestDetails from "../TesDetails";
 
-const Test = () => {
+const TestRoute = () => {
 	const {
 		test,
 		isLoading
@@ -19,4 +19,4 @@ const Test = () => {
 	);
 }
 
-export default Test;
+export default TestRoute;

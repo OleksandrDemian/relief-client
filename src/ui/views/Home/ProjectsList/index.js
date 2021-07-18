@@ -15,6 +15,7 @@ const Projects = () => {
 			)}
 			{!isLoading && projects && projects.map(project => (
 				<ProjectPreview
+					key={project.id}
 					id={project.id}
 					name={project.name}
 					description={project.description}

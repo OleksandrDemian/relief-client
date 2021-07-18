@@ -2,10 +2,10 @@ import React, {useState} from "react";
 import Input from "../../../../components/Input";
 import {bindValue} from "../../../../utils/bindValue";
 import {TestCreatorFormContainer} from "./styled";
+import Button from "../../../../components/Button";
 
 const DEFAULT_DESCRIPTION =
-`
-### Description
+`### Description
 
 ### Setup
 
@@ -40,16 +40,16 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
 				maxLength={150}
 			/>
 			<Input
-				type="text"
+				type="multiline"
 				label="Description (markdown)"
 				value={description}
 				onInput={bindValue(setDescription)}
 				maxLength={1000}
 				disabled={disabled}
 			/>
-			<button type="submit" disabled={disabled}>
+			<Button color="primary" variant="contained" type="submit" disabled={disabled}>
 				Submit
-			</button>
+			</Button>
 		</TestCreatorFormContainer>
 	);
 };

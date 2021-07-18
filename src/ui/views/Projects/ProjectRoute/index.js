@@ -1,7 +1,7 @@
 import {useConnect} from "./connect";
 import ProjectOverview from "../ProjectOverview";
 
-const Project = () => {
+const ProjectRoute = () => {
 	const {
 		id,
 		isLoading,
@@ -20,4 +20,4 @@ const Project = () => {
 	);
 }
 
-export default Project;
+export default ProjectRoute;

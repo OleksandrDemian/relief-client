@@ -7,8 +7,9 @@ import {useProjectsContext} from "../../../../context/projects";
 import {usePostEnvironment} from "../../../../dataHooks/useEnvironments";
 import {stringToNumber} from "../../../../utils/stringToNumber";
 import {Heading} from "../../../components/Heading";
+import Button from "../../../components/Button";
 
-const NewEnvironment = () => {
+const NewEnvironmentRoute = () => {
 	const {currentProjectId} = useProjectsContext();
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
@@ -53,15 +54,15 @@ const NewEnvironment = () => {
 					onInput={bindValue(setDescription)}
 					disabled={disable}
 				/>
-				<button
+				<Button
 					type="submit"
 					disabled={disable}
 				>
 					Submit
-				</button>
+				</Button>
 			</form>
 		</SectionContainer>
 	);
 };
 
-export default NewEnvironment;
+export default NewEnvironmentRoute;

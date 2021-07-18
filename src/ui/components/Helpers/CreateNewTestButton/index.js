@@ -1,13 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import Button from "../../Button";
 
 const CreateNewTestButton = () => {
 	return (
-		<Link to={`/test/new`}>
-			<button>
-				Create new test
-			</button>
-		</Link>
+		<Button component={Link} to={`/test/new`}>
+			Create new test
+		</Button>
 	);
 }
 

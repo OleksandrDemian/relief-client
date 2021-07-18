@@ -3,6 +3,7 @@ import {useConnect} from "./connect";
 import {TestStatusContainer, TestStatusesContainer} from "./styled";
 import {StatusArray} from "../../../../enum/status";
 import {bindValue} from "../../../utils/bindValue";
+import Select from "../../../components/Select";
 
 export const TestStatus = ({projectId, testId}) => {
 	const {
@@ -20,15 +21,17 @@ export const TestStatus = ({projectId, testId}) => {
 			{!isLoading && statuses && statuses.length && (
 				<TestStatusesContainer>
 					{statuses.map(status => (
-						<TestStatusContainer>
+						<TestStatusContainer key={status.envId}>
 							<span>Environment:</span>
 							<span><b>{status.name}</b></span>
 							<span>Status:</span>
-							<select disabled={isSavingStatus} value={status.status} onChange={bindValue(onUpdateTestStatus(status.envId))}>
-								{StatusArray.map(s => (
-									<option value={s.id}>{s.label}</option>
-								))}
-							</select>
+							<Select
+								native
+								disabled={isSavingStatus}
+								value={status.status}
+								onChange={bindValue(onUpdateTestStatus(status.envId))}
+								options={StatusArray.map(s => ({value: s.id, label: s.label}))}>
+							</Select>
 						</TestStatusContainer>
 					))}
 				</TestStatusesContainer>

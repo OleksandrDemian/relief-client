@@ -1,7 +1,7 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Tests from "./Tests";
-import Project from "./Project";
+import TestsRoute from "./TestsRoute";
+import ProjectRoute from "./ProjectRoute";
 import {useConnect} from "./connect";
 
 const ProjectsRouter = () => {
@@ -9,8 +9,8 @@ const ProjectsRouter = () => {
 
 	return (
 		<Switch>
-			<Route exact path="/project/:id" component={Project} />
-			<Route exact path="/project/:id/tests" component={Tests} />
+			<Route exact path="/project/:id" component={ProjectRoute} />
+			<Route exact path="/project/:id/tests" component={TestsRoute} />
 		</Switch>
 	);
 };
