@@ -2,7 +2,6 @@ import React from "react";
 import ReactMarkdown from "react-markdown";
 import {Heading} from "../../../components/Heading";
 import {TestDetailsContainer} from "./styled";
-import {Link} from "react-router-dom";
 import {useConnect} from "./connect";
 import Input from "../../../components/Input";
 import SectionContainer from "../../../components/SectionContainer";
@@ -24,8 +23,8 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 					<p>Deleting test</p>
 				)}
 				<ButtonsRow>
-					<Button component={Link} to={`/test/${id}/update`}>Update</Button>
-					<Button onClick={onDeleteTest} color={"secondary"}>Delete</Button>
+					<Button href={`/test/${id}/update`}>Update</Button>
+					<Button onClick={onDeleteTest} color={"error"}>Delete</Button>
 				</ButtonsRow>
 				<Input
 					label="Test key"

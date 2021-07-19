@@ -19,7 +19,7 @@ const ProjectOverview = ({id}) => {
 			</Heading>
 			<ButtonsRow>
 				<CreateNewTestButton />
-				<Button component={Link} to={`/project/${id}/tests`}>
+				<Button href={`/project/${id}/tests`}>
 					Show all test-cases
 				</Button>
 			</ButtonsRow>

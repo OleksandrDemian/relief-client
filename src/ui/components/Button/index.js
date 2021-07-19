@@ -1,9 +1,21 @@
 import React from "react";
-import {Button as MButton} from "@material-ui/core";
+import {StyledButtonLink, StyledButton} from "./styled";
 
-const Button = ({size="small", variant="contained", color="primary", ...props}) => {
+const Button = ({size="small", variant="contained", color="primary", href, ...props}) => {
+	if(href) {
+		return (
+			<StyledButtonLink
+				{...props}
+				to={href}
+				size={size}
+				variant={variant}
+				color={color}
+			/>
+		)
+	}
+
 	return (
-		<MButton
+		<StyledButton
 			size={size}
 			variant={variant}
 			color={color}

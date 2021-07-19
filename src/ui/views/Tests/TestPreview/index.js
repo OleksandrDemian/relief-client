@@ -9,10 +9,10 @@ const TestPreview = ({id, name, shortDescription}) => {
 		<TestPreviewContainer>
 			<Heading>{name}</Heading>
 			<p>{shortDescription}</p>
-			<Button component={Link} to={`/test/${id}`}>
+			<Button href={`/test/${id}`}>
 				Open
 			</Button>
-			<Button component={Link} to={`/test/${id}/update`}>
+			<Button href={`/test/${id}/update`}>
 				Update
 			</Button>
 		</TestPreviewContainer>

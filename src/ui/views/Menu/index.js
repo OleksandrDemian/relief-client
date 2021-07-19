@@ -1,13 +1,12 @@
 import React from "react";
 import {MenuContainer, StickyContainer} from "./styled";
 import {Heading} from "../../components/Heading";
-import {Link} from "react-router-dom";
 import {useProjectsContext} from "../../../context/projects";
 import Button from "../../components/Button";
 
-const MenuItem = ({to, children}) => {
-	return <Button component={Link} to={to}>{children}</Button>
-}
+const MenuItem = ({to, children}) => (
+	<Button href={to}>{children}</Button>
+);
 
 const Menu = () => {
 	const {

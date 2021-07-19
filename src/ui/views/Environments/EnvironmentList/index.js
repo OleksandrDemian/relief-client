@@ -5,7 +5,7 @@ const EnvironmentsList = ({environments}) => {
 	return (
 		<EnvironmentsContainer>
 			{environments.map(env => (
-				<EnvironmentContainer>
+				<EnvironmentContainer key={env.id}>
 					{env.name}
 					<p>{env.description}</p>
 				</EnvironmentContainer>

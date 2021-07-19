@@ -14,7 +14,7 @@ const TestsTable = ({tests}) => {
 						</TestRowTitleLink>
 						<span>{test.shortDescription}</span>
 					</TestRowDescription>
-					<Button component={Link} to={`/test/${test.id}/update`}>Update</Button>
+					<Button href={`/test/${test.id}/update`}>Update</Button>
 				</TestRowContainer>
 			))}
 		</TestsContainer>
