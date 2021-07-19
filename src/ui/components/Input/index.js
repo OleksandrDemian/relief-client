@@ -10,7 +10,7 @@ const Input = ({ label, onInput, value, type = "text", maxLength = 50, ...props 
 		<TextField
 			maxLength={maxLength}
 			multiline={type === "multiline"}
-			placeholder="Jot something"
+			label={label}
 			id={id}
 			onChange={onInput}
 			value={value}

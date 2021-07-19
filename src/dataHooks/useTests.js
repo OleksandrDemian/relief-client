@@ -36,7 +36,6 @@ export const usePostTest = (projectId) => {
 		},
 		{
 			onSuccess: async () => {
-				console.log("Invalidate project tests: " + projectId);
 				queryClient.invalidateQueries(["tests", projectId]);
 			}
 		}

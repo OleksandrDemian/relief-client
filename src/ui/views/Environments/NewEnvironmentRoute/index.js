@@ -1,6 +1,6 @@
 import React, {useMemo, useState} from "react";
 import Input from "../../../components/Input";
-import ProjectSelect from "../../../components/ProjectSelect";
+import ProjectSelect from "../../../components/Helpers/ProjectSelect";
 import {bindValue} from "../../../utils/bindValue";
 import SectionContainer from "../../../components/SectionContainer";
 import {useProjectsContext} from "../../../../context/projects";
@@ -8,6 +8,7 @@ import {usePostEnvironment} from "../../../../dataHooks/useEnvironments";
 import {stringToNumber} from "../../../../utils/stringToNumber";
 import {Heading} from "../../../components/Heading";
 import Button from "../../../components/Button";
+import {ColumnForm} from "../../../components/Form/styled";
 
 const NewEnvironmentRoute = () => {
 	const {currentProjectId} = useProjectsContext();
@@ -36,9 +37,9 @@ const NewEnvironmentRoute = () => {
 	return (
 		<SectionContainer>
 			<Heading>Create environment</Heading>
-			<form onSubmit={onSubmit}>
+			<ColumnForm onSubmit={onSubmit}>
 				<ProjectSelect
-					value={projectId}
+					value={projectIdNum}
 					onChange={(projectId) => setProjectId(projectId)}
 					disabled={disable}
 				/>
@@ -60,7 +61,7 @@ const NewEnvironmentRoute = () => {
 				>
 					Submit
 				</Button>
-			</form>
+			</ColumnForm>
 		</SectionContainer>
 	);
 };

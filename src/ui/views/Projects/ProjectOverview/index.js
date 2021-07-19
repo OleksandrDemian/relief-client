@@ -6,6 +6,7 @@ import PendingTests from "./PendingTests";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
 import {useProjectsContext} from "../../../../context/projects";
 import Button from "../../../components/Button";
+import {ButtonsRow} from "../../../components/Button/styled";
 
 const ProjectOverview = ({id}) => {
 	const {
@@ -16,10 +17,12 @@ const ProjectOverview = ({id}) => {
 			<Heading>
 				{currentProject?.name}
 			</Heading>
-			<CreateNewTestButton />
-			<Button component={Link} to={`/project/${id}/tests`}>
-				Show all test-cases
-			</Button>
+			<ButtonsRow>
+				<CreateNewTestButton />
+				<Button component={Link} to={`/project/${id}/tests`}>
+					Show all test-cases
+				</Button>
+			</ButtonsRow>
 			<PendingTests />
 		</SectionContainer>
 	);

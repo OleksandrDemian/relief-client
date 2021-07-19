@@ -1,22 +1,16 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {CardContainer, CardsColumn} from "../../../components/Card/styled";
 
-export const TestsTableContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 100%;
+export const TestsContainer = styled(CardsColumn)`
+  margin-top: 1rem;
 `;
 
-export const TestRowContainer = styled.div`
+export const TestRowContainer = styled(CardContainer)`
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  ${({theme}) => css`
-    border: ${theme.misc.border};
-	border-radius: ${theme.border.radius};
-  `}
 `;
 
 export const TestRowDescription = styled.div`

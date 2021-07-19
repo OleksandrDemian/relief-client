@@ -3,6 +3,11 @@ import {MenuContainer, StickyContainer} from "./styled";
 import {Heading} from "../../components/Heading";
 import {Link} from "react-router-dom";
 import {useProjectsContext} from "../../../context/projects";
+import Button from "../../components/Button";
+
+const MenuItem = ({to, children}) => {
+	return <Button component={Link} to={to}>{children}</Button>
+}
 
 const Menu = () => {
 	const {
@@ -14,24 +19,24 @@ const Menu = () => {
 		<MenuContainer>
 			<StickyContainer>
 				<Heading>Menu</Heading>
-				<Link to="/">Home</Link>
+				<MenuItem to="/">Home</MenuItem>
 				{!isLoading && (currentProjectId != null) && (
 					<>
-						<Link to={`/project/${currentProjectId}/tests`}>Tests</Link>
-						<Link to={`/environments`}>Environments</Link>
-						<Link to={`/test/new`}>New test</Link>
-						<Link to={`/environments/new`}>New environment</Link>
+						<MenuItem to={`/project/${currentProjectId}/tests`}>Tests</MenuItem>
+						<MenuItem to={`/environments`}>Environments</MenuItem>
+						<MenuItem to={`/test/new`}>New test</MenuItem>
+						<MenuItem to={`/environments/new`}>New environment</MenuItem>
 					</>
 				)}
 
 				<Heading>Projects</Heading>
 				{!isLoading && projects && projects.map(project => (
-					<Link
+					<MenuItem
 						key={project.id}
 						to={`/project/${project.id}`}
 					>
 						{project.name}
-					</Link>
+					</MenuItem>
 				))}
 			</StickyContainer>
 		</MenuContainer>

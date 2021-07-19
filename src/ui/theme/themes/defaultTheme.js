@@ -15,7 +15,7 @@ const fontSizes = {
 
 const colors = {
 	text: "black",
-	border: "#b9bbbe",
+	border: "#e0e0e0",
 	borderActive: "cornflowerblue"
 };
 

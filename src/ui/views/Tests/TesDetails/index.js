@@ -8,6 +8,7 @@ import Input from "../../../components/Input";
 import SectionContainer from "../../../components/SectionContainer";
 import TestStatus from "../TestStatus";
 import Button from "../../../components/Button";
+import {ButtonsRow} from "../../../components/Button/styled";
 
 const TestDetails = ({id, testKey, projectId, name, shortDescription, description}) => {
 	const {
@@ -22,8 +23,10 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 				{isDeleting && (
 					<p>Deleting test</p>
 				)}
-				<Button component={Link} to={`/test/${id}/update`}>Update</Button>
-				<Button onClick={onDeleteTest}>Delete</Button>
+				<ButtonsRow>
+					<Button component={Link} to={`/test/${id}/update`}>Update</Button>
+					<Button onClick={onDeleteTest} color={"secondary"}>Delete</Button>
+				</ButtonsRow>
 				<Input
 					label="Test key"
 					disabled={true}
@@ -35,9 +38,11 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 					projectId={projectId}
 					testId={id}
 				/>
-				<ReactMarkdown>
-					{description}
-				</ReactMarkdown>
+				<div>
+					<ReactMarkdown>
+						{description}
+					</ReactMarkdown>
+				</div>
 			</TestDetailsContainer>
 		</SectionContainer>
 	);

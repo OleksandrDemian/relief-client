@@ -1,8 +1,9 @@
 import React, {useState} from "react";
 import Input from "../../../../components/Input";
 import {bindValue} from "../../../../utils/bindValue";
-import {TestCreatorFormContainer} from "./styled";
 import Button from "../../../../components/Button";
+import {ColumnForm} from "../../../../components/Form/styled";
+import {ButtonsRow} from "../../../../components/Button/styled";
 
 const DEFAULT_DESCRIPTION =
 `### Description
@@ -29,11 +30,10 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
 	};
 
 	return (
-		<TestCreatorFormContainer onSubmit={onSubmit}>
-			<Input disabled={disabled} type="input" label="Name" value={name} onInput={bindValue(setName)} />
+		<ColumnForm onSubmit={onSubmit}>
+			<Input disabled={disabled} label="Name" value={name} onInput={bindValue(setName)} />
 			<Input
 				disabled={disabled}
-				type="input"
 				label="Short description"
 				value={shortDescription}
 				onInput={bindValue(setShortDescription)}
@@ -47,10 +47,12 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
 				maxLength={1000}
 				disabled={disabled}
 			/>
-			<Button color="primary" variant="contained" type="submit" disabled={disabled}>
-				Submit
-			</Button>
-		</TestCreatorFormContainer>
+			<ButtonsRow>
+				<Button color="primary" variant="contained" type="submit" disabled={disabled}>
+					Submit
+				</Button>
+			</ButtonsRow>
+		</ColumnForm>
 	);
 };
 

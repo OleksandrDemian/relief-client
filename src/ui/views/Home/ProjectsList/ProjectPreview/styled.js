@@ -1,12 +1,4 @@
-import styled, {css} from "styled-components";
-
-export const ProjectPreviewContainer = styled.div`
-	${({theme}) => css`
-	  border: ${theme.misc.border};
-	  border-radius: ${theme.border.radius};
-	  padding: 1rem;
-	`}
-`;
+import styled from "styled-components";
 
 export const ProjectPreviewTitle = styled.h2`
 	margin: 0;

@@ -1,11 +1,11 @@
 import React from "react";
-import {TestRowContainer, TestRowDescription, TestRowTitleLink, TestsTableContainer} from "./styled";
+import {TestRowContainer, TestRowDescription, TestRowTitleLink, TestsContainer} from "./styled";
 import {Link} from "react-router-dom";
 import Button from "../../../components/Button";
 
 const TestsTable = ({tests}) => {
 	return (
-		<TestsTableContainer>
+		<TestsContainer>
 			{tests.map(test => (
 				<TestRowContainer key={test.id}>
 					<TestRowDescription>
@@ -17,7 +17,7 @@ const TestsTable = ({tests}) => {
 					<Button component={Link} to={`/test/${test.id}/update`}>Update</Button>
 				</TestRowContainer>
 			))}
-		</TestsTableContainer>
+		</TestsContainer>
 	);
 };
 

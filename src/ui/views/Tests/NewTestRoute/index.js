@@ -1,13 +1,8 @@
-import SectionContainer from "../../../components/SectionContainer";
 import CreateTest from "../CreateTest";
 
-const NewTestRoute = ({projectId}) => {
+const NewTestRoute = () => {
 	return (
-		<SectionContainer>
-			<CreateTest
-				projectId={projectId}
-			/>
-		</SectionContainer>
+		<CreateTest />
 	);
 };
 

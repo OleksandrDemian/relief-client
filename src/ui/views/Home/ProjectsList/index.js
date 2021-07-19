@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectPreview from "./ProjectPreview";
 import {useProjectsContext} from "../../../../context/projects";
+import {CardsColumn} from "../../../components/Card/styled";
 
 const Projects = () => {
 	const {
@@ -13,14 +14,16 @@ const Projects = () => {
 			{isLoading && (
 				<p>Loading projects</p>
 			)}
-			{!isLoading && projects && projects.map(project => (
-				<ProjectPreview
-					key={project.id}
-					id={project.id}
-					name={project.name}
-					description={project.description}
-				/>
-			))}
+			<CardsColumn>
+				{!isLoading && projects && projects.map(project => (
+					<ProjectPreview
+						key={project.id}
+						id={project.id}
+						name={project.name}
+						description={project.description}
+					/>
+				))}
+			</CardsColumn>
 		</>
 	);
 }

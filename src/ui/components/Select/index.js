@@ -1,16 +1,23 @@
 import React from "react";
-import {Select as MSelect} from "@material-ui/core";
+import {FormControl, Select as MSelect} from "@material-ui/core";
 
-const Select = ({options, value, ...props}) => {
+const Select = ({options, value, onChange, label, ...props}) => {
 	return (
-		<MSelect
-			{...props}
-			value={value || ''}
-		>
-			{options && options.map(o => (
-				<option value={o.value}>{o.label}</option>
-			))}
-		</MSelect>
+		<FormControl>
+			<MSelect
+				{...props}
+				native
+				onChange={onChange}
+				value={value}
+			>
+				{value === "" && (
+					<option value="">{label}</option>
+				)}
+				{options && options.map(o => (
+					<option key={o.value} value={o.value}>{o.label}</option>
+				))}
+			</MSelect>
+		</FormControl>
 	);
 }
 
