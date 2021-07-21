@@ -22,8 +22,6 @@ export const useConnect = () => {
 		}
 	}, [test, changeCurrentProject, currentProjectId]);
 
-	console.log(test, testId, id);
-
 	return {
 		test,
 		id: testId,

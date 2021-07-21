@@ -9,6 +9,7 @@ import {stringToNumber} from "../../../../utils/stringToNumber";
 import {Heading} from "../../../components/Heading";
 import Button from "../../../components/Button";
 import {ColumnForm} from "../../../components/Form/styled";
+import {ButtonsRow} from "../../../components/Button/styled";
 
 const NewEnvironmentRoute = () => {
 	const {currentProjectId} = useProjectsContext();
@@ -55,12 +56,14 @@ const NewEnvironmentRoute = () => {
 					onInput={bindValue(setDescription)}
 					disabled={disable}
 				/>
-				<Button
-					type="submit"
-					disabled={disable}
-				>
-					Submit
-				</Button>
+				<ButtonsRow>
+					<Button
+						type="submit"
+						disabled={disable}
+					>
+						Submit
+					</Button>
+				</ButtonsRow>
 			</ColumnForm>
 		</SectionContainer>
 	);

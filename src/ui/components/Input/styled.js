@@ -41,6 +41,7 @@ export const StyledLabelContainer = styled.div`
 `;
 
 export const StyledLabel = styled.label`
+  font-weight: 500;
   ${({theme}) => css`
     font-size: ${theme.fontSizes.subtext};
     color: ${theme.colors.text};

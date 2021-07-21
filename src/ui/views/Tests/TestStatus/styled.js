@@ -1,4 +1,5 @@
 import styled, {css} from "styled-components";
+import Status from "../../../../enum/status";
 
 export const TestStatusesContainer = styled.div`
   display: flex;
@@ -14,5 +15,16 @@ export const TestStatusContainer = styled.div`
   ${({theme}) => css`
     border: ${theme.misc.border};
     border-radius: ${theme.border.radius};
+    background-color: ${({status}) => {
+      switch (status) {
+        case Status.PASSED.id:
+          return theme.colors.success[0];
+        case Status.NOT_PASSED.id:
+          return theme.colors.error[0];
+        case Status.PENDING.id:
+        default:
+          return theme.colors.warning[0];
+      }
+    }};
   `}
 `;

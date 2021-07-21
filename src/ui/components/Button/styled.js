@@ -13,14 +13,21 @@ const BASE_BUTTON_STYLE = css`
   line-height: 1.375rem;
   padding: 0.25rem 1rem;
   transition: all 0.2s ease 0s;
+  gap: 0.5rem;
+  align-items: center;
   ${({theme, color}) => css`
     background-color: ${theme.colors[color][0]};
     color: white;
+    box-shadow: ${theme.shadow.main};
     
     :hover {
       background-color: ${theme.colors[color][1]};
     }
   `}
+  
+  & > svg {
+    width: 1.25rem;
+  }
 `;
 
 export const ButtonsRow = styled.div`

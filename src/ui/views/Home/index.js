@@ -7,7 +7,7 @@ const Home = () => {
 	return (
 		<SectionContainer>
 			<Heading>
-				Welcome to Laser Unicorns
+				Welcome to Relief
 			</Heading>
 			<p>The place where your tests are invalidated magically</p>
 			<Projects />

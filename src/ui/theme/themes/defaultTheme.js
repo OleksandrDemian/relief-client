@@ -18,11 +18,13 @@ const colors = {
 	border: "#e0e0e0",
 	borderActive: "cornflowerblue",
 
+	menuBackground: "#f5f5fb",
+	cardBackground: "white",
 	primary: ["#6256bf", "#7e72dd"],
-	secondary: ["#0099bf", "#01b1dd"],
-	error: ["#bf3d48", "#e0505c"],
-	success: ["#1fbf57", "#2ee56e"],
-	warning: ["#fd8724", "#ff9a47"],
+	secondary: ["#4fa0fe", "#6bafff"],
+	error: ["#fe637e", "#ff8297"],
+	success: ["#39daba", "#54dfc3"],
+	warning: ["#ffbb5b", "#ffc878"],
 };
 
 const border = {
@@ -31,11 +33,16 @@ const border = {
 	width: "1px"
 };
 
+const shadow = {
+	main: "0px 4px 8px rgba(0,0,0,0.12)"
+}
+
 const defaultTheme = (isDesktop) => ({
 	font: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
 
 	colors,
 	border,
+	shadow,
 	fontSizes: isDesktop ? fontSizes.desktop : fontSizes.mobile,
 
 	section: {

@@ -10,7 +10,6 @@ export const TestRowContainer = styled(CardContainer)`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem;
 `;
 
 export const TestRowDescription = styled.div`

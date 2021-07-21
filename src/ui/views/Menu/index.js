@@ -1,11 +1,14 @@
 import React from "react";
-import {MenuContainer, StickyContainer} from "./styled";
-import {Heading} from "../../components/Heading";
+import {MenuContainer, MenuItemsContainer, StyleMenuLink, ProjectsTitle} from "./styled";
 import {useProjectsContext} from "../../../context/projects";
 import Button from "../../components/Button";
+import {ReactComponent as HomeIcon} from "../../assets/ionicons/home.svg"
+import {ReactComponent as TestsIcon} from "../../assets/ionicons/tests.svg"
+import {ReactComponent as EnvironmentsIcon} from "../../assets/ionicons/environments.svg"
+import {ReactComponent as AddIcon} from "../../assets/ionicons/add-outline.svg"
 
-const MenuItem = ({to, children}) => (
-	<Button href={to}>{children}</Button>
+const MenuItem = ({to, children, ...props}) => (
+	<Button href={to} {...props}>{children}</Button>
 );
 
 const Menu = () => {
@@ -16,19 +19,34 @@ const Menu = () => {
 	} = useProjectsContext();
 	return (
 		<MenuContainer>
-			<StickyContainer>
-				<Heading>Menu</Heading>
-				<MenuItem to="/">Home</MenuItem>
+			<MenuItemsContainer>
+				<StyleMenuLink to="/">
+					<HomeIcon/>
+					Home
+				</StyleMenuLink>
 				{!isLoading && (currentProjectId != null) && (
 					<>
-						<MenuItem to={`/project/${currentProjectId}/tests`}>Tests</MenuItem>
-						<MenuItem to={`/environments`}>Environments</MenuItem>
-						<MenuItem to={`/test/new`}>New test</MenuItem>
-						<MenuItem to={`/environments/new`}>New environment</MenuItem>
+						<StyleMenuLink to={`/project/${currentProjectId}/tests`}>
+							<TestsIcon/>
+							Tests
+						</StyleMenuLink>
+						<StyleMenuLink to={`/environments`}>
+							<EnvironmentsIcon/>
+							Environments
+						</StyleMenuLink>
+						<StyleMenuLink to={`/test/new`}>
+							<AddIcon/>
+							New test
+						</StyleMenuLink>
+						<StyleMenuLink to={`/environments/new`}>
+							<AddIcon/>
+							New environment
+						</StyleMenuLink>
 					</>
 				)}
-
-				<Heading>Projects</Heading>
+			</MenuItemsContainer>
+			<MenuItemsContainer>
+				<ProjectsTitle>Projects</ProjectsTitle>
 				{!isLoading && projects && projects.map(project => (
 					<MenuItem
 						key={project.id}
@@ -37,7 +55,7 @@ const Menu = () => {
 						{project.name}
 					</MenuItem>
 				))}
-			</StickyContainer>
+			</MenuItemsContainer>
 		</MenuContainer>
 	);
 };

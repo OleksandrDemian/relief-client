@@ -8,6 +8,8 @@ import SectionContainer from "../../../components/SectionContainer";
 import TestStatus from "../TestStatus";
 import Button from "../../../components/Button";
 import {ButtonsRow} from "../../../components/Button/styled";
+import {ReactComponent as DeleteIcon} from "../../../assets/ionicons/trash.svg";
+import {ReactComponent as UpdateIcon} from "../../../assets/ionicons/create-outline.svg";
 
 const TestDetails = ({id, testKey, projectId, name, shortDescription, description}) => {
 	const {
@@ -23,14 +25,20 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 					<p>Deleting test</p>
 				)}
 				<ButtonsRow>
-					<Button href={`/test/${id}/update`}>Update</Button>
-					<Button onClick={onDeleteTest} color={"error"}>Delete</Button>
+					<Button href={`/test/${id}/update`}>
+						<UpdateIcon />
+						Update
+					</Button>
+					<Button onClick={onDeleteTest} color={"error"}>
+						<DeleteIcon />
+						Delete
+					</Button>
 				</ButtonsRow>
 				<Input
 					label="Test key"
 					disabled={true}
 					maxLength={testKey.length}
-					value={`ID: ${testKey}`}
+					value={testKey}
 				/>
 				<p>{shortDescription}</p>
 				<TestStatus

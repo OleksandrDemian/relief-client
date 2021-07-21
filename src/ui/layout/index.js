@@ -20,6 +20,8 @@ export const Main = styled.main`
   display: flex;
   align-items: start;
   flex-direction: column;
+  overflow: auto;
+  max-height: 100vh;
 `;
 
 Layout.propTypes = {

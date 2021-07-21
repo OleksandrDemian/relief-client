@@ -21,7 +21,7 @@ export const TestStatus = ({projectId, testId}) => {
 			{!isLoading && statuses && statuses.length && (
 				<TestStatusesContainer>
 					{statuses.map(status => (
-						<TestStatusContainer key={status.envId}>
+						<TestStatusContainer key={status.envId} status={status.status}>
 							<span>Environment:</span>
 							<span><b>{status.name}</b></span>
 							<span>Status:</span>

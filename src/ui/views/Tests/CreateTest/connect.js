@@ -6,7 +6,6 @@ import {useProjectsContext} from "../../../../context/projects";
 export const useConnect = () => {
 	const {currentProjectId} = useProjectsContext();
 	const [projectId, setProjectId] = useState(currentProjectId);
-	console.log(projectId)
 	const {
 		mutate: saveTest,
 		isLoading: isSaving,

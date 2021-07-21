@@ -4,6 +4,7 @@ import {bindValue} from "../../../../utils/bindValue";
 import Button from "../../../../components/Button";
 import {ColumnForm} from "../../../../components/Form/styled";
 import {ButtonsRow} from "../../../../components/Button/styled";
+import {ReactComponent as SaveIcon} from "../../../../assets/ionicons/save-outline.svg"
 
 const DEFAULT_DESCRIPTION =
 `### Description
@@ -49,6 +50,7 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
 			/>
 			<ButtonsRow>
 				<Button color="primary" variant="contained" type="submit" disabled={disabled}>
+					<SaveIcon />
 					Submit
 				</Button>
 			</ButtonsRow>
