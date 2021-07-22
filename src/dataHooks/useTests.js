@@ -27,20 +27,12 @@ export const useTests = (projectId) => useQuery(
 	}
 );
 
-export const usePostTest = (projectId) => {
-	const queryClient = useQueryClient();
-	return useMutation(
-		async (test) => {
-			const {data} = await client.post("/tests", test);
-			return data;
-		},
-		{
-			onSuccess: async () => {
-				queryClient.invalidateQueries(["tests", projectId]);
-			}
-		}
-	);
-};
+export const usePostTest = () => useMutation(
+	async (test) => {
+		const {data} = await client.post("/tests", test);
+		return data;
+	}
+);
 
 export const usePutTest = (testId, projectId) => {
 	const queryClient = useQueryClient();

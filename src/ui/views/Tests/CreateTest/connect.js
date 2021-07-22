@@ -1,24 +1,26 @@
 import {usePostTest} from "../../../../dataHooks/useTests";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {useHistory} from "react-router";
 import {useProjectsContext} from "../../../../context/projects";
+import {useQueryClient} from "react-query";
 
 export const useConnect = () => {
 	const {currentProjectId} = useProjectsContext();
-	const [projectId, setProjectId] = useState(currentProjectId);
+	const queryClient = useQueryClient();
 	const {
-		mutate: saveTest,
+		mutateAsync: saveTest,
 		isLoading: isSaving,
 		isSuccess,
 		data
-	} = usePostTest(projectId);
+	} = usePostTest();
 	const history = useHistory();
 
-	const onTestSubmit = (test) => {
-		const newTest = Object.assign({}, test, {
-			projectId: Number(projectId)// should be number!
-		});
-		saveTest(newTest);
+	const onTestSubmit = async (test) => {
+		const newTest = Object.assign({}, test);
+		console.log(newTest);
+		await saveTest(newTest);
+
+		queryClient.invalidateQueries(["tests", newTest?.projectId]);
 	};
 
 	useEffect(() => {
@@ -31,7 +33,6 @@ export const useConnect = () => {
 		onTestSubmit,
 		isSuccess,
 		isSaving,
-		projectId,
-		setProjectId
+		currentProjectId,
 	}
 };

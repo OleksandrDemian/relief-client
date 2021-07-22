@@ -12,5 +12,5 @@ export const CardContainer = styled.div`
 export const CardsColumn = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 `;

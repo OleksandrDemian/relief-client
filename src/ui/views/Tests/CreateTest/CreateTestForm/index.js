@@ -5,6 +5,8 @@ import Button from "../../../../components/Button";
 import {ColumnForm} from "../../../../components/Form/styled";
 import {ButtonsRow} from "../../../../components/Button/styled";
 import {ReactComponent as SaveIcon} from "../../../../assets/ionicons/save-outline.svg"
+import ProjectSelect from "../../../../components/Helpers/ProjectSelect";
+import {stringToNumber} from "../../../../../utils/stringToNumber";
 
 const DEFAULT_DESCRIPTION =
 `### Description
@@ -14,10 +16,11 @@ const DEFAULT_DESCRIPTION =
 ### How to reproduce
 `;
 
-const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
+const CreateTestForm = ({onTestSubmit, disabled, placeHolder, showProjectSelect}) => {
 	const [name, setName] = useState(placeHolder?.name || "");
 	const [shortDescription, setShortDescription] = useState(placeHolder?.shortDescription || "");
 	const [description, setDescription] = useState(placeHolder?.description || DEFAULT_DESCRIPTION);
+	const [projectId, setProjectId] = useState(placeHolder?.projectId);
 
 	const onSubmit = (e) => {
 		e.preventDefault();
@@ -26,12 +29,19 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder}) => {
 			id: placeHolder?.id || undefined,
 			name,
 			shortDescription,
-			description
+			description,
+			projectId: stringToNumber(projectId)
 		});
 	};
 
 	return (
 		<ColumnForm onSubmit={onSubmit}>
+			{showProjectSelect && (
+				<ProjectSelect
+					value={projectId}
+					onChange={(id) => setProjectId(id)}
+				/>
+			)}
 			<Input disabled={disabled} label="Name" value={name} onInput={bindValue(setName)} />
 			<Input
 				disabled={disabled}

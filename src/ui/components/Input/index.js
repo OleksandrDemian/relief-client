@@ -4,7 +4,7 @@ import {InputContainer, StyledInput, StyledLabel, StyledLabelContainer, StyledTe
 
 const labelToId = (val) => val.toLowerCase().replace(" ", "-") + "-" + Math.round(Math.random() * 1000);
 
-const Input = ({ label, onInput, value, type = "text", maxLength = 50, ...props }) => {
+const Input = ({ label, onInput, value, type = "text", maxLength = 50, inputRef, ...props }) => {
 	const [id] = useState(() => labelToId(label));
 	if(type === "multiline") {
 		return (
@@ -19,6 +19,7 @@ const Input = ({ label, onInput, value, type = "text", maxLength = 50, ...props 
 					id={id}
 					onChange={onInput}
 					value={value}
+					ref={inputRef}
 					{...props}
 				/>
 			</InputContainer>
@@ -38,6 +39,7 @@ const Input = ({ label, onInput, value, type = "text", maxLength = 50, ...props 
 				id={id}
 				onChange={onInput}
 				value={value}
+				ref={inputRef}
 				{...props}
 			/>
 		</InputContainer>

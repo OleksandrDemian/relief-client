@@ -22,15 +22,12 @@ export const TestStatus = ({projectId, testId}) => {
 				<TestStatusesContainer>
 					{statuses.map(status => (
 						<TestStatusContainer key={status.envId} status={status.status}>
-							<span>Environment:</span>
 							<span><b>{status.name}</b></span>
-							<span>Status:</span>
 							<Select
 								disabled={isSavingStatus}
 								value={status.status}
 								onChange={bindValue(onUpdateTestStatus(status.envId))}
 								options={StatusArray.map(s => ({value: s.id, label: s.label}))}
-								label={"Select status"}
 							/>
 						</TestStatusContainer>
 					))}

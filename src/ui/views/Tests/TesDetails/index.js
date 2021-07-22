@@ -1,22 +1,22 @@
-import React from "react";
+import React, {useRef} from "react";
 import ReactMarkdown from "react-markdown";
 import {Heading} from "../../../components/Heading";
-import {TestDetailsContainer} from "./styled";
+import {TestActionsRow, TestDetailsContainer} from "./styled";
 import {useConnect} from "./connect";
 import Input from "../../../components/Input";
 import SectionContainer from "../../../components/SectionContainer";
 import TestStatus from "../TestStatus";
 import Button from "../../../components/Button";
-import {ButtonsRow} from "../../../components/Button/styled";
 import {ReactComponent as DeleteIcon} from "../../../assets/ionicons/trash.svg";
 import {ReactComponent as UpdateIcon} from "../../../assets/ionicons/create-outline.svg";
+import CopyTextButton from "../../../components/Helpers/CopyTextButton";
 
 const TestDetails = ({id, testKey, projectId, name, shortDescription, description}) => {
 	const {
 		isDeleting,
 		onDeleteTest
 	} = useConnect(projectId, id);
-
+	const inputToCopy = useRef(null);
 	return (
 		<SectionContainer>
 			<TestDetailsContainer>
@@ -24,7 +24,17 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 				{isDeleting && (
 					<p>Deleting test</p>
 				)}
-				<ButtonsRow>
+				<TestActionsRow vSpace={0}>
+					<Input
+						inputRef={inputToCopy}
+						label="Test key"
+						disabled={true}
+						maxLength={testKey.length}
+						value={testKey}
+					/>
+					<CopyTextButton inputToCopy={inputToCopy} color="secondary">
+						Copy test key
+					</CopyTextButton>
 					<Button href={`/test/${id}/update`}>
 						<UpdateIcon />
 						Update
@@ -33,13 +43,7 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 						<DeleteIcon />
 						Delete
 					</Button>
-				</ButtonsRow>
-				<Input
-					label="Test key"
-					disabled={true}
-					maxLength={testKey.length}
-					value={testKey}
-				/>
+				</TestActionsRow>
 				<p>{shortDescription}</p>
 				<TestStatus
 					projectId={projectId}

@@ -4,6 +4,7 @@ import {Heading} from "../../../components/Heading";
 import {useConnect} from "./connect";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
 import TestsTable from "../TestsTable";
+import {ButtonsRow} from "../../../components/Button/styled";
 
 const TestsRoute = () => {
 	const {
@@ -16,7 +17,9 @@ const TestsRoute = () => {
 			<Heading>
 				All tests for project {projectId}
 			</Heading>
-			<CreateNewTestButton />
+			<ButtonsRow>
+				<CreateNewTestButton />
+			</ButtonsRow>
 			{isLoading && (
 				<p>Loading tests</p>
 			)}

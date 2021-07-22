@@ -2,25 +2,27 @@ import React from "react";
 import CreateTestForm from "./CreateTestForm";
 import {Heading} from "../../../components/Heading";
 import {useConnect} from "./connect";
-import ProjectSelect from "../../../components/Helpers/ProjectSelect";
 import SectionContainer from "../../../components/SectionContainer";
+import {stringToNumber} from "../../../../utils/stringToNumber";
 
 const CreateTest = () => {
 	const {
 		onTestSubmit,
 		isSaving,
-		projectId,
-		setProjectId
+		currentProjectId
 	} = useConnect();
 
 	return (
 		<SectionContainer>
 			<Heading>Create test case</Heading>
-			<ProjectSelect
-				value={projectId}
-				onChange={(id) => setProjectId(id)}
+			<CreateTestForm
+				onTestSubmit={onTestSubmit}
+				disabled={isSaving}
+				showProjectSelect
+				placeHolder={{
+					projectId: stringToNumber(currentProjectId)
+				}}
 			/>
-			<CreateTestForm onTestSubmit={onTestSubmit} disabled={isSaving} />
 		</SectionContainer>
 	);
 }

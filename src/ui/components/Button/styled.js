@@ -33,6 +33,9 @@ const BASE_BUTTON_STYLE = css`
 export const ButtonsRow = styled.div`
   display: flex;
   gap: 0.5rem;
+  ${({vSpace = 1}) => css`
+    margin: ${vSpace}rem 0;
+  `}
 `;
 
 export const StyledButton = styled.button`

@@ -58,6 +58,6 @@ export const StyledInput = styled.input`
 
 export const StyledTextArea = styled.textarea`
   resize: vertical;
-  min-height: 10rem;
+  min-height: 15rem;
   ${INPUT_STYLES}
 `;
