@@ -15,10 +15,13 @@ export const useTest = (id) => useQuery(
 	}
 );
 
-export const useTests = (projectId) => useQuery(
-	["tests", projectId],
+export const useTests = (projectId, status = null) => useQuery(
+	["tests", {
+		projectId,
+		status
+	}],
 	async () => {
-		const {data} = await client.get(`/projects/${projectId}/tests`);
+		const {data} = await client.get(`/projects/${projectId}/tests${status ? `?status=${status}` : ""}`);
 		return data;
 	},
 	{
@@ -27,14 +30,24 @@ export const useTests = (projectId) => useQuery(
 	}
 );
 
-export const usePostTest = () => useMutation(
-	async (test) => {
-		const {data} = await client.post("/tests", test);
-		return data;
-	}
-);
+export const usePostTest = () => {
+	const queryClient = useQueryClient();
+	return useMutation(
+		async (test) => {
+			const {data} = await client.post("/tests", test);
+			return data;
+		},
+		{
+			onSuccess: (data, input) => {
+				queryClient.invalidateQueries(["tests", {
+					projectId: input.projectId
+				}]);
+			}
+		}
+	);
+}
 
-export const usePutTest = (testId, projectId) => {
+export const usePutTest = () => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		async (test) => {
@@ -42,15 +55,17 @@ export const usePutTest = (testId, projectId) => {
 			return data;
 		},
 		{
-			onSuccess: async () => {
-				queryClient.invalidateQueries(["tests", projectId]);
-				queryClient.invalidateQueries(["test", testId]);
+			onSuccess: async (data, input) => {
+				queryClient.invalidateQueries(["tests", {
+					projectId: input.projectId
+				}]);
+				queryClient.invalidateQueries(["test", input.id]);
 			}
 		}
 	);
 };
 
-export const usePutStatus = (testId) => {
+export const usePutStatus = () => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		/**
@@ -63,8 +78,10 @@ export const usePutStatus = (testId) => {
 			return data;
 		},
 		{
-			onSuccess: async () => {
-				queryClient.invalidateQueries(["test", testId]);
+			onSuccess: async (res, input) => {
+				console.log(input)
+				queryClient.invalidateQueries(["test", input.testId]);
+				queryClient.invalidateQueries(["tests"]);
 			}
 		}
 	);
@@ -79,7 +96,9 @@ export const useDeleteTest = (projectId) => {
 		},
 		{
 			onSuccess: async () => {
-				queryClient.invalidateQueries(["tests", projectId]);
+				queryClient.invalidateQueries(["tests", {
+					projectId
+				}]);
 			}
 		}
 	);

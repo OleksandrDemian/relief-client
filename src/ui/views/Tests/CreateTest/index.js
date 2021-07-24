@@ -9,21 +9,29 @@ const CreateTest = () => {
 	const {
 		onTestSubmit,
 		isSaving,
-		currentProjectId
+		currentProjectId,
+		isLoading
 	} = useConnect();
 
 	return (
-		<SectionContainer>
-			<Heading>Create test case</Heading>
-			<CreateTestForm
-				onTestSubmit={onTestSubmit}
-				disabled={isSaving}
-				showProjectSelect
-				placeHolder={{
-					projectId: stringToNumber(currentProjectId)
-				}}
-			/>
-		</SectionContainer>
+		<>
+			{isLoading && (
+				<p>Preparing</p>
+			)}
+			{!isLoading && (
+				<SectionContainer>
+					<Heading>Create test case</Heading>
+					<CreateTestForm
+						onTestSubmit={onTestSubmit}
+						disabled={isSaving}
+						showProjectSelect
+						placeHolder={{
+							projectId: stringToNumber(currentProjectId)
+						}}
+					/>
+				</SectionContainer>
+			)}
+		</>
 	);
 }
 

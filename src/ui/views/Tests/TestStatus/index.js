@@ -1,9 +1,7 @@
 import React from "react";
 import {useConnect} from "./connect";
 import {TestStatusContainer, TestStatusesContainer} from "./styled";
-import {StatusArray} from "../../../../enum/status";
-import {bindValue} from "../../../utils/bindValue";
-import Select from "../../../components/Select";
+import StatusSelect from "../../../components/Helpers/StatusSelect";
 
 export const TestStatus = ({projectId, testId}) => {
 	const {
@@ -23,11 +21,10 @@ export const TestStatus = ({projectId, testId}) => {
 					{statuses.map(status => (
 						<TestStatusContainer key={status.envId} status={status.status}>
 							<span><b>{status.name}</b></span>
-							<Select
+							<StatusSelect
 								disabled={isSavingStatus}
 								value={status.status}
-								onChange={bindValue(onUpdateTestStatus(status.envId))}
-								options={StatusArray.map(s => ({value: s.id, label: s.label}))}
+								onChange={onUpdateTestStatus(status.envId)}
 							/>
 						</TestStatusContainer>
 					))}

@@ -2,11 +2,15 @@ import {usePostTest} from "../../../../dataHooks/useTests";
 import {useEffect} from "react";
 import {useHistory} from "react-router";
 import {useProjectsContext} from "../../../../context/projects";
-import {useQueryClient} from "react-query";
+import {useEnvironments} from "../../../../dataHooks/useEnvironments";
+import Status from "../../../../enum/status";
 
 export const useConnect = () => {
 	const {currentProjectId} = useProjectsContext();
-	const queryClient = useQueryClient();
+	const {
+		data: environments,
+		isLoading
+	} = useEnvironments(currentProjectId);
 	const {
 		mutateAsync: saveTest,
 		isLoading: isSaving,
@@ -16,11 +20,10 @@ export const useConnect = () => {
 	const history = useHistory();
 
 	const onTestSubmit = async (test) => {
-		const newTest = Object.assign({}, test);
-		console.log(newTest);
+		const newTest = Object.assign({}, test, {
+			environments: environments.map(e => ({ envId: e.id, status: Status.PENDING.id }))
+		});
 		await saveTest(newTest);
-
-		queryClient.invalidateQueries(["tests", newTest?.projectId]);
 	};
 
 	useEffect(() => {
@@ -30,6 +33,8 @@ export const useConnect = () => {
 	}, [data, history]);
 
 	return {
+		isLoading,
+		environments,
 		onTestSubmit,
 		isSuccess,
 		isSaving,

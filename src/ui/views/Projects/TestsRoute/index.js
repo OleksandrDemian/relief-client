@@ -5,12 +5,15 @@ import {useConnect} from "./connect";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
 import TestsTable from "../TestsTable";
 import {ButtonsRow} from "../../../components/Button/styled";
+import StatusSelect from "../../../components/Helpers/StatusSelect";
+import Status from "../../../../enum/status";
+import FilteredTests from "../ProjectOverview/FilteredTests";
 
 const TestsRoute = () => {
 	const {
-		tests,
-		isLoading,
-		projectId
+		projectId,
+		status,
+		setStatus
 	} = useConnect();
 	return (
 		<SectionContainer>
@@ -19,20 +22,18 @@ const TestsRoute = () => {
 			</Heading>
 			<ButtonsRow>
 				<CreateNewTestButton />
-			</ButtonsRow>
-			{isLoading && (
-				<p>Loading tests</p>
-			)}
-			{!isLoading && (!tests || tests.length < 1) && (
-				<>
-					<p>No tests</p>
-				</>
-			)}
-			{!isLoading && tests && tests.length > 0 && (
-				<TestsTable
-					tests={tests}
+				<StatusSelect
+					value={status}
+					onChange={setStatus}
+					options={[
+						{value: "all", label: "All"}
+					]}
 				/>
-			)}
+			</ButtonsRow>
+			<FilteredTests
+				currentProjectId={projectId}
+				status={status}
+			/>
 		</SectionContainer>
 	);
 };

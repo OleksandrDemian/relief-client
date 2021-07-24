@@ -15,7 +15,7 @@ export const useConnect = () => {
 		mutate: updateTest,
 		isLoading: isSaving,
 		isSuccess
-	} = usePutTest(testId, test?.projectId);
+	} = usePutTest();
 
 	return {
 		isLoading,

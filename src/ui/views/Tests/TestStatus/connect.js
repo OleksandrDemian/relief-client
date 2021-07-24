@@ -29,7 +29,7 @@ export const useConnect = ({projectId, testId}) => {
 	const {
 		mutate,
 		isLoading: isSavingStatus
-	} = usePutStatus(testId);
+	} = usePutStatus();
 
 	const onUpdateTestStatus = (envId) => {
 		return (val) => {
