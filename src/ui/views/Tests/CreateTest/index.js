@@ -3,7 +3,6 @@ import CreateTestForm from "./CreateTestForm";
 import {Heading} from "../../../components/Heading";
 import {useConnect} from "./connect";
 import SectionContainer from "../../../components/SectionContainer";
-import {stringToNumber} from "../../../../utils/stringToNumber";
 
 const CreateTest = () => {
 	const {
@@ -26,7 +25,7 @@ const CreateTest = () => {
 						disabled={isSaving}
 						showProjectSelect
 						placeHolder={{
-							projectId: stringToNumber(currentProjectId)
+							projectId: currentProjectId
 						}}
 					/>
 				</SectionContainer>

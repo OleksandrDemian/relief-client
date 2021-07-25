@@ -7,14 +7,14 @@ const TestsTable = ({tests}) => {
 	return (
 		<TestsContainer>
 			{tests.map(test => (
-				<TestRowContainer key={test.id}>
+				<TestRowContainer key={test._id}>
 					<TestRowDescription>
-						<TestRowTitleLink to={`/test/${test.id}`}>
+						<TestRowTitleLink to={`/test/${test._id}`}>
 							<b>{test.name}</b>
 						</TestRowTitleLink>
 						<span>{test.shortDescription}</span>
 					</TestRowDescription>
-					<Button href={`/test/${test.id}/update`}>
+					<Button href={`/test/${test._id}/update`}>
 						<EditIcon />
 						Update
 					</Button>

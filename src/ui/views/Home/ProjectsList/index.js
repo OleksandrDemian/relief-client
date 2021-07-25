@@ -17,8 +17,8 @@ const Projects = () => {
 			<CardsColumn>
 				{!isLoading && projects && projects.map(project => (
 					<ProjectPreview
-						key={project.id}
-						id={project.id}
+						key={project._id}
+						id={project._id}
 						name={project.name}
 						description={project.description}
 					/>

@@ -9,7 +9,7 @@ export const useConnect = () => {
 	} = useProjectsContext();
 
 	return {
-		id: Number(id),
+		id,
 		currentProject,
 		isLoading,
 	}

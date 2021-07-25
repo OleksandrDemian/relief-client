@@ -11,11 +11,11 @@ import {ReactComponent as DeleteIcon} from "../../../assets/ionicons/trash.svg";
 import {ReactComponent as UpdateIcon} from "../../../assets/ionicons/create-outline.svg";
 import CopyTextButton from "../../../components/Helpers/CopyTextButton";
 
-const TestDetails = ({id, testKey, projectId, name, shortDescription, description}) => {
+const TestDetails = ({_id, testKey, projectId, name, shortDescription, description}) => {
 	const {
 		isDeleting,
 		onDeleteTest
-	} = useConnect(projectId, id);
+	} = useConnect(projectId, _id);
 	const inputToCopy = useRef(null);
 	return (
 		<SectionContainer>
@@ -35,7 +35,7 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 					<CopyTextButton inputToCopy={inputToCopy} color="secondary">
 						Copy test key
 					</CopyTextButton>
-					<Button href={`/test/${id}/update`}>
+					<Button href={`/test/${_id}/update`}>
 						<UpdateIcon />
 						Update
 					</Button>
@@ -47,7 +47,7 @@ const TestDetails = ({id, testKey, projectId, name, shortDescription, descriptio
 				<p>{shortDescription}</p>
 				<TestStatus
 					projectId={projectId}
-					testId={id}
+					testId={_id}
 				/>
 				<div>
 					<ReactMarkdown>

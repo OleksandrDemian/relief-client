@@ -1,15 +1,12 @@
 import {useParams} from "react-router";
 import {usePutTest, useTest} from "../../../../dataHooks/useTests";
-import {stringToNumber} from "../../../../utils/stringToNumber";
-import {useMemo} from "react";
 
 export const useConnect = () => {
 	const {id} = useParams();
-	const testId = useMemo(() => stringToNumber(id), [id]);
 	const {
 		isLoading,
 		data: test
-	} = useTest(testId);
+	} = useTest(id);
 
 	const {
 		mutate: updateTest,
@@ -20,7 +17,7 @@ export const useConnect = () => {
 	return {
 		isLoading,
 		test,
-		id: testId,
+		id,
 		updateTest,
 		isSaving,
 		isSuccess

@@ -17,7 +17,7 @@ export const ProjectsContextProvider = ({children}) => {
 		if(!projects) return;
 
 		for(let i = 0; i < projects.length; i++) {
-			if(projects[i].id === id) {
+			if(projects[i]._id === id) {
 				setCurrentProject(projects[i]);
 				return;
 			}
@@ -28,7 +28,7 @@ export const ProjectsContextProvider = ({children}) => {
 		<ProjectsContext.Provider
 			value={{
 				projects,
-				currentProjectId: currentProject?.id,
+				currentProjectId: currentProject?._id,
 				currentProject,
 				isLoading,
 				changeCurrentProject

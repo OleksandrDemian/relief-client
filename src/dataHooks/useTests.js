@@ -59,7 +59,7 @@ export const usePutTest = () => {
 				queryClient.invalidateQueries(["tests", {
 					projectId: input.projectId
 				}]);
-				queryClient.invalidateQueries(["test", input.id]);
+				queryClient.invalidateQueries(["test", input._id]);
 			}
 		}
 	);
@@ -79,7 +79,6 @@ export const usePutStatus = () => {
 		},
 		{
 			onSuccess: async (res, input) => {
-				console.log(input)
 				queryClient.invalidateQueries(["test", input.testId]);
 				queryClient.invalidateQueries(["tests"]);
 			}

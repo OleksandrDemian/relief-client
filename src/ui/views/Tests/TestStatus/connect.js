@@ -18,8 +18,8 @@ export const useConnect = ({projectId, testId}) => {
 		for (const environment of environments) {
 			s.push({
 				name: environment.name,
-				envId: environment.id,
-				status: test.environments?.[environment.id]?.status || "pending"
+				envId: environment._id,
+				status: test.environments?.[environment._id]?.status || "pending"
 			});
 		}
 

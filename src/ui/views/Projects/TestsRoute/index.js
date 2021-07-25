@@ -3,22 +3,20 @@ import SectionContainer from "../../../components/SectionContainer";
 import {Heading} from "../../../components/Heading";
 import {useConnect} from "./connect";
 import CreateNewTestButton from "../../../components/Helpers/CreateNewTestButton";
-import TestsTable from "../TestsTable";
 import {ButtonsRow} from "../../../components/Button/styled";
 import StatusSelect from "../../../components/Helpers/StatusSelect";
-import Status from "../../../../enum/status";
 import FilteredTests from "../ProjectOverview/FilteredTests";
 
 const TestsRoute = () => {
 	const {
-		projectId,
+		id,
 		status,
 		setStatus
 	} = useConnect();
 	return (
 		<SectionContainer>
 			<Heading>
-				All tests for project {projectId}
+				All tests for project {id}
 			</Heading>
 			<ButtonsRow>
 				<CreateNewTestButton />
@@ -31,7 +29,7 @@ const TestsRoute = () => {
 				/>
 			</ButtonsRow>
 			<FilteredTests
-				currentProjectId={projectId}
+				currentProjectId={id}
 				status={status}
 			/>
 		</SectionContainer>

@@ -1,11 +1,10 @@
-import React, {useMemo, useState} from "react";
+import React, {useState} from "react";
 import Input from "../../../components/Input";
 import ProjectSelect from "../../../components/Helpers/ProjectSelect";
 import {bindValue} from "../../../utils/bindValue";
 import SectionContainer from "../../../components/SectionContainer";
 import {useProjectsContext} from "../../../../context/projects";
 import {usePostEnvironment} from "../../../../dataHooks/useEnvironments";
-import {stringToNumber} from "../../../../utils/stringToNumber";
 import {Heading} from "../../../components/Heading";
 import Button from "../../../components/Button";
 import {ColumnForm} from "../../../components/Form/styled";
@@ -16,18 +15,17 @@ const NewEnvironmentRoute = () => {
 	const [name, setName] = useState("");
 	const [description, setDescription] = useState("");
 	const [projectId, setProjectId] = useState(currentProjectId);
-	const projectIdNum = useMemo(() => stringToNumber(projectId), [projectId]);
 	const {
 		mutate,
 		isLoading
-	} = usePostEnvironment(projectIdNum);
+	} = usePostEnvironment(projectId);
 
 	const onSubmit = (e) => {
 		e.stopPropagation();
 		e.preventDefault();
 
 		mutate({
-			projectId: projectIdNum,
+			projectId,
 			name,
 			description
 		});
@@ -40,7 +38,7 @@ const NewEnvironmentRoute = () => {
 			<Heading>Create environment</Heading>
 			<ColumnForm onSubmit={onSubmit}>
 				<ProjectSelect
-					value={projectIdNum}
+					value={projectId}
 					onChange={(projectId) => setProjectId(projectId)}
 					disabled={disable}
 				/>

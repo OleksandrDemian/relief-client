@@ -6,7 +6,6 @@ import {ColumnForm} from "../../../../components/Form/styled";
 import {ButtonsRow} from "../../../../components/Button/styled";
 import {ReactComponent as SaveIcon} from "../../../../assets/ionicons/save-outline.svg"
 import ProjectSelect from "../../../../components/Helpers/ProjectSelect";
-import {stringToNumber} from "../../../../../utils/stringToNumber";
 
 const DEFAULT_DESCRIPTION =
 `### Description
@@ -26,11 +25,11 @@ const CreateTestForm = ({onTestSubmit, disabled, placeHolder, showProjectSelect}
 		e.preventDefault();
 		e.stopPropagation();
 		onTestSubmit({
-			id: placeHolder?.id || undefined,
+			id: placeHolder?._id || undefined,
 			name,
 			shortDescription,
 			description,
-			projectId: stringToNumber(projectId)
+			projectId
 		});
 	};
 

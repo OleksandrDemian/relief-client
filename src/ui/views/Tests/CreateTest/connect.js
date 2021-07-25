@@ -21,14 +21,14 @@ export const useConnect = () => {
 
 	const onTestSubmit = async (test) => {
 		const newTest = Object.assign({}, test, {
-			environments: environments.map(e => ({ envId: e.id, status: Status.PENDING.id }))
+			environments: environments.map(e => ({ envId: e._id, status: Status.PENDING.id }))
 		});
 		await saveTest(newTest);
 	};
 
 	useEffect(() => {
-		if (data && data.id) {
-			history.replace(`/test/${data.id}`);
+		if (data && data._id) {
+			history.replace(`/test/${data._id}`);
 		}
 	}, [data, history]);
 

@@ -6,7 +6,7 @@ import Select from "../../Select";
 const ProjectSelect = ({value, onChange}) => {
 	const {projects} = useProjectsContext();
 	const options = useMemo(() =>
-		[...projects.map(p => ({value: p.id, label: p.name}))],
+		[...projects.map(p => ({value: p._id, label: p.name}))],
 		[projects]);
 	return (
 		<Select

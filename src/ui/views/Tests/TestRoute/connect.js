@@ -1,7 +1,6 @@
 import {useParams} from "react-router";
 import {useTest} from "../../../../dataHooks/useTests";
-import {useEffect, useMemo} from "react";
-import {stringToNumber} from "../../../../utils/stringToNumber";
+import {useEffect} from "react";
 import {useProjectsContext} from "../../../../context/projects";
 
 export const useConnect = () => {
@@ -10,11 +9,10 @@ export const useConnect = () => {
 		changeCurrentProject,
 		currentProjectId
 	} = useProjectsContext();
-	const testId = useMemo(() => stringToNumber(id), [id]);
 	const {
 		data: test,
 		isLoading
-	} = useTest(testId);
+	} = useTest(id);
 
 	useEffect(() => {
 		if(test && test.projectId !== currentProjectId) {
@@ -24,7 +22,7 @@ export const useConnect = () => {
 
 	return {
 		test,
-		id: testId,
+		id,
 		isLoading
 	}
 };

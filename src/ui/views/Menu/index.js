@@ -49,8 +49,8 @@ const Menu = () => {
 				<ProjectsTitle>Projects</ProjectsTitle>
 				{!isLoading && projects && projects.map(project => (
 					<MenuItem
-						key={project.id}
-						to={`/project/${project.id}`}
+						key={project._id}
+						to={`/project/${project._id}`}
 					>
 						{project.name}
 					</MenuItem>
