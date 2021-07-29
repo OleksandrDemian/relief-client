@@ -1,3 +1,5 @@
+const generateColorsFromHue = (h, s, l) => [`hsl(${h}, ${s}%, ${l}%)`, `hsl(${h}, ${s}%, ${l+12}%)`, `hsl(${h}, ${s}%, ${l-12}%)`];
+
 const fontSizes = {
 	mobile: {
 		heading: "1.85rem",
@@ -13,6 +15,14 @@ const fontSizes = {
 	}
 };
 
+const HUE = {
+	primary: [270, 85, 54],
+	secondary: [201, 85, 54],
+	error: [345, 85, 54],
+	success: [150, 75, 50],
+	warning: [35, 95, 60]
+};
+
 const colors = {
 	text: "black",
 	border: "#e0e0e0",
@@ -20,11 +30,11 @@ const colors = {
 
 	menuBackground: "#f5f5fb",
 	cardBackground: "white",
-	primary: ["#6256bf", "#7e72dd"],
-	secondary: ["#4fa0fe", "#6bafff"],
-	error: ["#fe637e", "#ff8297"],
-	success: ["#39daba", "#54dfc3"],
-	warning: ["#ffbb5b", "#ffc878"],
+	primary: generateColorsFromHue(...HUE.primary),
+	secondary: generateColorsFromHue(...HUE.secondary),
+	error: generateColorsFromHue(...HUE.error),
+	success: generateColorsFromHue(...HUE.success),
+	warning: generateColorsFromHue(...HUE.warning)
 };
 
 const border = {
