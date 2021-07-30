@@ -28,3 +28,8 @@ export const TestStatusContainer = styled.div`
     }};
   `}
 `;
+
+export const TestStatusNameText = styled.span`
+  font-weight: bold;
+  color: white;
+`;

@@ -16,7 +16,7 @@ const fontSizes = {
 };
 
 const HUE = {
-	primary: [270, 85, 54],
+	primary: [240, 40, 54],
 	secondary: [201, 85, 54],
 	error: [345, 85, 54],
 	success: [150, 75, 50],

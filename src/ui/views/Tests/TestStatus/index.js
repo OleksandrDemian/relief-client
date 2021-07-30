@@ -1,6 +1,6 @@
 import React from "react";
 import {useConnect} from "./connect";
-import {TestStatusContainer, TestStatusesContainer} from "./styled";
+import {TestStatusContainer, TestStatusesContainer, TestStatusNameText} from "./styled";
 import StatusSelect from "../../../components/Helpers/StatusSelect";
 
 export const TestStatus = ({projectId, testId}) => {
@@ -20,7 +20,7 @@ export const TestStatus = ({projectId, testId}) => {
 				<TestStatusesContainer>
 					{statuses.map(status => (
 						<TestStatusContainer key={status.envId} status={status.status}>
-							<span><b>{status.name}</b></span>
+							<TestStatusNameText>{status.name}</TestStatusNameText>
 							<StatusSelect
 								disabled={isSavingStatus}
 								value={status.status}
