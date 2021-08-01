@@ -15,11 +15,12 @@ export const useConnect = ({projectId, testId}) => {
 	const statuses = useMemo(() => {
 		if(!test || !environments) return null;
 		const s = [];
+		// todo: refactor this (also backend)
 		for (const environment of environments) {
 			s.push({
 				name: environment.name,
 				envId: environment._id,
-				status: test.environments?.[environment._id]?.status || "pending"
+				status: test.environments.find(env => env.envId === environment._id)?.status || "pending"
 			});
 		}
 
