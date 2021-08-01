@@ -11,7 +11,7 @@ import {ReactComponent as DeleteIcon} from "../../../assets/ionicons/trash.svg";
 import {ReactComponent as UpdateIcon} from "../../../assets/ionicons/create-outline.svg";
 import CopyTextButton from "../../../components/Helpers/CopyTextButton";
 
-const TestDetails = ({_id, testKey, projectId, name, shortDescription, description}) => {
+const TestDetails = ({_id, projectId, name, shortDescription, description}) => {
 	const {
 		isDeleting,
 		onDeleteTest
@@ -29,8 +29,8 @@ const TestDetails = ({_id, testKey, projectId, name, shortDescription, descripti
 						inputRef={inputToCopy}
 						label="Test key"
 						disabled={true}
-						maxLength={testKey.length}
-						value={testKey}
+						maxLength={_id.length}
+						value={_id}
 					/>
 					<CopyTextButton inputToCopy={inputToCopy} color="secondary">
 						Copy test key

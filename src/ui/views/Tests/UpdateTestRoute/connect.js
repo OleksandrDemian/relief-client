@@ -1,5 +1,5 @@
 import {useParams} from "react-router";
-import {usePutTest, useTest} from "../../../../dataHooks/useTests";
+import {usePatchTest, useTest} from "../../../../dataHooks/useTests";
 
 export const useConnect = () => {
 	const {id} = useParams();
@@ -12,7 +12,7 @@ export const useConnect = () => {
 		mutate: updateTest,
 		isLoading: isSaving,
 		isSuccess
-	} = usePutTest();
+	} = usePatchTest();
 
 	return {
 		isLoading,

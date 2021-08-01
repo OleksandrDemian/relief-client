@@ -19,7 +19,7 @@ export const usePostEnvironment = (projectId) => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		async (environment) => {
-			const {data} = await client.post("/environments", environment);
+			const {data} = await client.post(`/projects/${projectId}/environment`, environment);
 			return data;
 		},
 		{

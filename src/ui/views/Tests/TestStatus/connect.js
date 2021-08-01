@@ -1,5 +1,5 @@
 import {useEnvironments} from "../../../../dataHooks/useEnvironments";
-import {usePutStatus, useTest} from "../../../../dataHooks/useTests";
+import {usePatchStatus, useTest} from "../../../../dataHooks/useTests";
 import {useMemo} from "react";
 
 export const useConnect = ({projectId, testId}) => {
@@ -29,7 +29,7 @@ export const useConnect = ({projectId, testId}) => {
 	const {
 		mutate,
 		isLoading: isSavingStatus
-	} = usePutStatus();
+	} = usePatchStatus();
 
 	const onUpdateTestStatus = (envId) => {
 		return (val) => {

@@ -21,7 +21,12 @@ export const useTests = (projectId, status = null) => useQuery(
 		status
 	}],
 	async () => {
-		const {data} = await client.get(`/projects/${projectId}/tests${status ? `?status=${status}` : ""}`);
+		const query = new URLSearchParams();
+		query.set("projectId", projectId);
+		if (status != null) {
+			query.set("status", status);
+		}
+		const {data} = await client.get(`/tests?${query.toString()}`);
 		return data;
 	},
 	{
@@ -47,11 +52,11 @@ export const usePostTest = () => {
 	);
 }
 
-export const usePutTest = () => {
+export const usePatchTest = () => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		async (test) => {
-			const {data} = await client.put("/tests", test);
+			const {data} = await client.patch("/tests/" + test._id, test);
 			return data;
 		},
 		{
@@ -65,7 +70,7 @@ export const usePutTest = () => {
 	);
 };
 
-export const usePutStatus = () => {
+export const usePatchStatus = () => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		/**
@@ -74,7 +79,7 @@ export const usePutStatus = () => {
 		 * @returns {Promise<any>}
 		 */
 		async (status) => {
-			const {data} = await client.put("/tests/status", status);
+			const {data} = await client.patch(`/tests/${status.testId}/status`, status);
 			return data;
 		},
 		{
