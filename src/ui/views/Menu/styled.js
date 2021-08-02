@@ -2,10 +2,13 @@ import styled, {css} from "styled-components";
 import {Link} from "react-router-dom";
 
 export const MenuContainer = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 250px;
   padding: 1.8rem;
   overflow: auto;
-  max-height: 100vh;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
