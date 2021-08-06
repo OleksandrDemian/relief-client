@@ -1,20 +1,16 @@
 import styled, {css} from "styled-components";
 import {Link} from "react-router-dom";
+import {from} from "../../../hooks/useMediaQuery";
 
 export const MenuContainer = styled.div`
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 250px;
-  padding: 1.8rem;
+  width: 100%;
   overflow: auto;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   ${({theme}) => css`
-    background-color: ${theme.colors.menuBackground};
+    padding: ${theme.section.padding} 0.5rem;
   `}
 `;
 
@@ -33,7 +29,7 @@ export const StyleMenuLink = styled(Link)`
   padding: 0.5rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   text-decoration: none;
   transition: all 0.2s ease 0s;
   ${({theme}) => css`
@@ -44,11 +40,21 @@ export const StyleMenuLink = styled(Link)`
     }
 
     & > svg {
-      width: 1.25rem;
-      height: 1.25rem;
+      width: 1.75rem;
+      height: 1.75rem;
       color: ${theme.colors.primary[0]};
     }
   `}
+
+  span {
+    display: none;
+  }
+  
+  ${from.appMaxWidth} {
+    span {
+      display: block;
+    }
+  }
 `;
 
 export const ProjectsTitle = styled.span`

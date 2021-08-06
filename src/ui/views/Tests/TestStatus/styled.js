@@ -13,7 +13,6 @@ export const TestStatusContainer = styled.div`
   flex-direction: column;
   gap: 0 0.5rem;
   ${({theme}) => css`
-    border: ${theme.misc.border};
     border-radius: ${theme.border.radius};
     background-color: ${({status}) => {
       switch (status) {

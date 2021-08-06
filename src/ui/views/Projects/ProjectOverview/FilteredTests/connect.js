@@ -1,4 +1,4 @@
-import {useTests} from "../../../../../dataHooks/useTests";
+import {useTests} from "../../../../../dao/hooks/useTests";
 
 export const useConnect = ({projectId, status}) => {
 	const {

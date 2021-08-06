@@ -1,5 +1,5 @@
-import {useEnvironments} from "../../../../dataHooks/useEnvironments";
-import {usePatchStatus, useTest} from "../../../../dataHooks/useTests";
+import {useEnvironments} from "../../../../dao/hooks/useEnvironments";
+import {usePatchStatus, useTest} from "../../../../dao/hooks/useTests";
 import {useMemo} from "react";
 
 export const useConnect = ({projectId, testId}) => {

@@ -1,5 +1,5 @@
 import {useParams} from "react-router";
-import {useTest} from "../../../../dataHooks/useTests";
+import {useTest} from "../../../../dao/hooks/useTests";
 import {useEffect} from "react";
 import {useProjectsContext} from "../../../../context/projects";
 

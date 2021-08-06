@@ -1,5 +1,5 @@
 import {useMutation, useQuery, useQueryClient} from "react-query";
-import {client} from "../client";
+import {client} from "../../client";
 
 const ENV_STALE_TIME = 1000 * 60 * 5;
 

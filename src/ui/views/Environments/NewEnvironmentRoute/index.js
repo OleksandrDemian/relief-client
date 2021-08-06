@@ -4,7 +4,7 @@ import ProjectSelect from "../../../components/Helpers/ProjectSelect";
 import {bindValue} from "../../../utils/bindValue";
 import SectionContainer from "../../../components/SectionContainer";
 import {useProjectsContext} from "../../../../context/projects";
-import {usePostEnvironment} from "../../../../dataHooks/useEnvironments";
+import {usePostEnvironment} from "../../../../dao/hooks/useEnvironments";
 import {Heading} from "../../../components/Heading";
 import Button from "../../../components/Button";
 import {ColumnForm} from "../../../components/Form/styled";

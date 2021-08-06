@@ -1,5 +1,5 @@
 import {createContext, useCallback, useContext, useMemo, useState} from "react";
-import {useProjects} from "../../dataHooks/useProjects";
+import {useProjects} from "../../dao/hooks/useProjects";
 
 const ProjectsContext = createContext(null);
 export const useProjectsContext = () => useContext(ProjectsContext);

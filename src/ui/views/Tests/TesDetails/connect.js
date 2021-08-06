@@ -1,5 +1,5 @@
 import {useHistory} from "react-router";
-import {useDeleteTest} from "../../../../dataHooks/useTests";
+import {useDeleteTest} from "../../../../dao/hooks/useTests";
 
 export const useConnect = (projectId, testId) => {
 	const {

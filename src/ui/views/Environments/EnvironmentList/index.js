@@ -1,14 +1,12 @@
 import React from "react";
-import {EnvironmentContainer, EnvironmentsContainer} from "./styled";
+import {EnvironmentsContainer} from "./styled";
+import Environment from "../Environment";
 
 const EnvironmentsList = ({environments}) => {
 	return (
 		<EnvironmentsContainer>
 			{environments.map(env => (
-				<EnvironmentContainer key={env._id}>
-					{env.name}
-					<p>{env.description}</p>
-				</EnvironmentContainer>
+				<Environment {...env} />
 			))}
 		</EnvironmentsContainer>
 	);

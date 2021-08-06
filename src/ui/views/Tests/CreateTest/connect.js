@@ -1,8 +1,8 @@
-import {usePostTest} from "../../../../dataHooks/useTests";
+import {usePostTest} from "../../../../dao/hooks/useTests";
 import {useEffect} from "react";
 import {useHistory} from "react-router";
 import {useProjectsContext} from "../../../../context/projects";
-import {useEnvironments} from "../../../../dataHooks/useEnvironments";
+import {useEnvironments} from "../../../../dao/hooks/useEnvironments";
 import Status from "../../../../enum/status";
 
 export const useConnect = () => {

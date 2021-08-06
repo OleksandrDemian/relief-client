@@ -18,7 +18,7 @@ const BASE_BUTTON_STYLE = css`
   ${({theme, color}) => css`
     background-color: ${theme.colors[color][0]};
     color: white;
-    box-shadow: ${theme.shadow.main};
+    box-shadow: ${theme.shadow.button};
     
     :hover {
       background-color: ${theme.colors[color][1]};

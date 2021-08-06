@@ -5,7 +5,6 @@ import Button from "../../components/Button";
 import {ReactComponent as HomeIcon} from "../../assets/ionicons/home.svg"
 import {ReactComponent as TestsIcon} from "../../assets/ionicons/tests.svg"
 import {ReactComponent as EnvironmentsIcon} from "../../assets/ionicons/environments.svg"
-import {ReactComponent as AddIcon} from "../../assets/ionicons/add-outline.svg"
 
 const MenuItem = ({to, children, ...props}) => (
 	<Button href={to} {...props}>{children}</Button>
@@ -22,25 +21,17 @@ const Menu = () => {
 			<MenuItemsContainer>
 				<StyleMenuLink to="/">
 					<HomeIcon/>
-					Home
+					<span>Home</span>
 				</StyleMenuLink>
 				{!isLoading && (currentProjectId != null) && (
 					<>
 						<StyleMenuLink to={`/project/${currentProjectId}/tests`}>
 							<TestsIcon/>
-							Tests
+							<span>Tests</span>
 						</StyleMenuLink>
 						<StyleMenuLink to={`/environments`}>
 							<EnvironmentsIcon/>
-							Environments
-						</StyleMenuLink>
-						<StyleMenuLink to={`/test/new`}>
-							<AddIcon/>
-							New test
-						</StyleMenuLink>
-						<StyleMenuLink to={`/environments/new`}>
-							<AddIcon/>
-							New environment
+							<span>Environments</span>
 						</StyleMenuLink>
 					</>
 				)}

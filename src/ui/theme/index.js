@@ -6,7 +6,7 @@ import GlobalStyle from "./global";
 import {from, useMediaQuery} from "../../hooks/useMediaQuery";
 
 const Themed = ({ children }) => {
-	const isDesktop = useMediaQuery(from.tablet);
+	const isDesktop = useMediaQuery(from.appMaxWidth);
 	return (
 		<ThemeProvider theme={defaultTheme(isDesktop)}>
 			<GlobalStyle />

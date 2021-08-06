@@ -1,5 +1,5 @@
 import {useParams} from "react-router";
-import {usePatchTest, useTest} from "../../../../dataHooks/useTests";
+import {usePatchTest, useTest} from "../../../../dao/hooks/useTests";
 
 export const useConnect = () => {
 	const {id} = useParams();

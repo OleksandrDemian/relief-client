@@ -20,11 +20,13 @@ const HUE = {
 	secondary: [201, 85, 54],
 	error: [345, 85, 54],
 	success: [150, 75, 50],
-	warning: [35, 95, 60]
+	warning: [35, 95, 60],
+
+	rand: [225, 46, 32],
 };
 
 const colors = {
-	text: "black",
+	text: "#262b41",
 	border: "#e0e0e0",
 	borderActive: "cornflowerblue",
 
@@ -44,7 +46,8 @@ const border = {
 };
 
 const shadow = {
-	main: "0px 4px 8px rgba(0,0,0,0.12)"
+	button: "0px 4px 8px rgba(0,0,0,0.12)",
+	main: "0px 8px 16px rgba(0,0,0,0.08)",
 }
 
 const defaultTheme = (isDesktop) => ({
@@ -56,7 +59,7 @@ const defaultTheme = (isDesktop) => ({
 	fontSizes: isDesktop ? fontSizes.desktop : fontSizes.mobile,
 
 	section: {
-		padding: "1.8rem"
+		padding: isDesktop ? "1.8rem" : "1rem"
 	},
 
 	misc: {
