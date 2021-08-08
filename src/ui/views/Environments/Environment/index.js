@@ -1,17 +1,44 @@
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import {EnvironmentContainer, EnvironmentHead} from "./styled";
+import {EnvironmentEditView, EnvironmentView} from "./views";
+import {useConnect} from "./connect";
 
-const Environment = ({name, description, _id}) => {
+const Environment = ({ environment }) => {
+	const {
+		isLoading,
+		isEdit,
+		setIsEdit,
+		save,
+		remove
+	} = useConnect({
+		envId: environment._id,
+		projectId: environment.projectId,
+	});
+
+	const onSave = async (newEnvironment) => {
+		await save({
+			...environment,
+			...newEnvironment,
+		});
+	};
+
 	return (
-		<EnvironmentContainer>
-			<EnvironmentHead>{name}</EnvironmentHead>
-			<div>
-				<ReactMarkdown>
-					{description}
-				</ReactMarkdown>
-			</div>
-		</EnvironmentContainer>
+		<>
+			{!isEdit && (
+				<EnvironmentView
+					{...environment}
+					onEdit={() => setIsEdit(true)}
+				/>
+			)}
+			{isEdit && (
+				<EnvironmentEditView
+					{...environment}
+					onClose={() => setIsEdit(false)}
+					onSave={onSave}
+					onRemove={remove}
+					disabled={isLoading}
+				/>
+			)}
+		</>
 	);
 };
 

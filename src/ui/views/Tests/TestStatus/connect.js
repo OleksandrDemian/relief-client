@@ -19,8 +19,8 @@ export const useConnect = ({projectId, testId}) => {
 		for (const environment of environments) {
 			s.push({
 				name: environment.name,
-				envId: environment._id,
-				status: test.environments.find(env => env.envId === environment._id)?.status || "pending"
+				_id: environment._id,
+				status: test.environments.find(env => env._id === environment._id)?.status || "pending"
 			});
 		}
 
@@ -36,7 +36,7 @@ export const useConnect = ({projectId, testId}) => {
 		return (val) => {
 			mutate({
 				testId,
-				envId,
+				_id: envId,
 				status: val
 			});
 		};

@@ -21,7 +21,7 @@ export const useConnect = () => {
 
 	const onTestSubmit = async (test) => {
 		const newTest = Object.assign({}, test, {
-			environments: environments.map(e => ({ envId: e._id, status: Status.PENDING.id }))
+			environments: environments.map(e => ({ _id: e._id, status: Status.PENDING.id }))
 		});
 		await saveTest(newTest);
 	};

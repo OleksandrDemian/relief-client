@@ -19,12 +19,12 @@ export const TestStatus = ({projectId, testId}) => {
 			{!isLoading && statuses && statuses.length && (
 				<TestStatusesContainer>
 					{statuses.map(status => (
-						<TestStatusContainer key={status.envId} status={status.status}>
+						<TestStatusContainer key={status._id} status={status.status}>
 							<TestStatusNameText>{status.name}</TestStatusNameText>
 							<StatusSelect
 								disabled={isSavingStatus}
 								value={status.status}
-								onChange={onUpdateTestStatus(status.envId)}
+								onChange={onUpdateTestStatus(status._id)}
 							/>
 						</TestStatusContainer>
 					))}

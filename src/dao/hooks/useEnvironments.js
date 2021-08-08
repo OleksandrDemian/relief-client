@@ -29,3 +29,33 @@ export const usePostEnvironment = (projectId) => {
 		}
 	);
 };
+
+export const usePutEnvironment = () => {
+	const queryClient = useQueryClient();
+	return useMutation(
+		async ({projectId, envId, environment}) => {
+			const {data} = await client.put(`/projects/${projectId}/environment/${envId}`, environment);
+			return data;
+		},
+		{
+			onSuccess: async (a, input) => {
+				queryClient.invalidateQueries(["environments", input.projectId]);
+			}
+		}
+	);
+};
+
+export const useDeleteEnvironment = () => {
+	const queryClient = useQueryClient();
+	return useMutation(
+		async ({projectId, envId}) => {
+			const {data} = await client.delete(`/projects/${projectId}/environment/${envId}`);
+			return data;
+		},
+		{
+			onSuccess: async (a, input) => {
+				queryClient.invalidateQueries(["environments", input.projectId]);
+			}
+		}
+	);
+};

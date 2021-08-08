@@ -6,7 +6,7 @@ const EnvironmentsList = ({environments}) => {
 	return (
 		<EnvironmentsContainer>
 			{environments.map(env => (
-				<Environment {...env} />
+				<Environment key={env._id} environment={env} />
 			))}
 		</EnvironmentsContainer>
 	);
