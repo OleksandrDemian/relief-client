@@ -12,3 +12,8 @@ export const TestActionsRow = styled(ButtonsRow)`
     margin: 0;
   }
 `;
+
+export const BadgesBar = styled.div`
+  display: flex;
+  gap: 1rem;
+`;

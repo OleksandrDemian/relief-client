@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import ReactMarkdown from "react-markdown";
 import {Heading} from "../../../components/Heading";
-import {TestActionsRow, TestDetailsContainer} from "./styled";
+import {BadgesBar, TestActionsRow, TestDetailsContainer} from "./styled";
 import {useConnect} from "./connect";
 import Input from "../../../components/Input";
 import SectionContainer from "../../../components/SectionContainer";
@@ -11,7 +11,7 @@ import {ReactComponent as DeleteIcon} from "../../../assets/ionicons/trash.svg";
 import {ReactComponent as UpdateIcon} from "../../../assets/ionicons/create-outline.svg";
 import CopyTextButton from "../../../components/Helpers/CopyTextButton";
 
-const TestDetails = ({_id, projectId, name, shortDescription, description}) => {
+const TestDetails = ({_id, projectId, name, shortDescription, description, status}) => {
 	const {
 		isDeleting,
 		onDeleteTest
@@ -44,11 +44,16 @@ const TestDetails = ({_id, projectId, name, shortDescription, description}) => {
 						Delete
 					</Button>
 				</TestActionsRow>
+
 				<p>{shortDescription}</p>
-				<TestStatus
-					projectId={projectId}
-					testId={_id}
-				/>
+
+				<BadgesBar>
+					<TestStatus
+						testId={_id}
+						status={status.status}
+					/>
+				</BadgesBar>
+
 				<div>
 					<ReactMarkdown>
 						{description}

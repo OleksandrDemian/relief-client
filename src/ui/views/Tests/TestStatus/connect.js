@@ -1,52 +1,21 @@
-import {useEnvironments} from "../../../../dao/hooks/useEnvironments";
-import {usePatchStatus, useTest} from "../../../../dao/hooks/useTests";
-import {useMemo} from "react";
+import {usePatchStatus} from "../../../../dao/hooks/useTests";
 
-export const useConnect = ({projectId, testId}) => {
-	const {
-		isLoading: isLoadingEnvironments,
-		data: environments
-	} = useEnvironments(projectId);
-	const {
-		isLoading: isLoadingTest,
-		data: test
-	} = useTest(testId);
-
-	const statuses = useMemo(() => {
-		if(!test || !environments) return null;
-		const s = [];
-		// todo: refactor this (also backend)
-		for (const environment of environments) {
-			s.push({
-				name: environment.name,
-				_id: environment._id,
-				status: test.environments.find(env => env._id === environment._id)?.status || "pending"
-			});
-		}
-
-		return s;
-	}, [test, environments]);
-
+export const useConnect = ({testId}) => {
 	const {
 		mutate,
 		isLoading: isSavingStatus
-	} = usePatchStatus();
+	} = usePatchStatus(testId);
 
-	const onUpdateTestStatus = (envId) => {
+	const onUpdateTestStatus = () => {
 		return (val) => {
 			mutate({
-				testId,
-				_id: envId,
+				userId: null,
 				status: val
 			});
 		};
 	};
 
 	return {
-		isLoading: isLoadingEnvironments || isLoadingTest,
-		environments,
-		test,
-		statuses,
 		onUpdateTestStatus,
 		isSavingStatus
 	}

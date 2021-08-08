@@ -1,36 +1,22 @@
 import React from "react";
 import {useConnect} from "./connect";
-import {TestStatusContainer, TestStatusesContainer, TestStatusNameText} from "./styled";
+import {TestStatusContainer, TestStatusNameText} from "./styled";
 import StatusSelect from "../../../components/Helpers/StatusSelect";
 
-export const TestStatus = ({projectId, testId}) => {
+export const TestStatus = ({status, testId}) => {
 	const {
-		isLoading,
-		statuses,
 		onUpdateTestStatus,
 		isSavingStatus
-	} = useConnect({projectId, testId});
+	} = useConnect({testId});
 	return (
-		<>
-			{isLoading && (
-				<p>isLoading</p>
-			)}
-
-			{!isLoading && statuses && statuses.length && (
-				<TestStatusesContainer>
-					{statuses.map(status => (
-						<TestStatusContainer key={status._id} status={status.status}>
-							<TestStatusNameText>{status.name}</TestStatusNameText>
-							<StatusSelect
-								disabled={isSavingStatus}
-								value={status.status}
-								onChange={onUpdateTestStatus(status._id)}
-							/>
-						</TestStatusContainer>
-					))}
-				</TestStatusesContainer>
-			)}
-		</>
+		<TestStatusContainer status={status}>
+			<TestStatusNameText>Test status</TestStatusNameText>
+			<StatusSelect
+				disabled={isSavingStatus}
+				value={status}
+				onChange={onUpdateTestStatus(status._id)}
+			/>
+		</TestStatusContainer>
 	);
 }
 

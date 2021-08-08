@@ -70,21 +70,21 @@ export const usePatchTest = () => {
 	);
 };
 
-export const usePatchStatus = () => {
+export const usePatchStatus = (testId) => {
 	const queryClient = useQueryClient();
 	return useMutation(
 		/**
 		 *
-		 * @param status {testId, envId, status}
+		 * @param status {status, userId}
 		 * @returns {Promise<any>}
 		 */
 		async (status) => {
-			const {data} = await client.patch(`/tests/${status.testId}/status`, status);
+			const {data} = await client.patch(`/tests/${testId}/status`, status);
 			return data;
 		},
 		{
-			onSuccess: async (res, input) => {
-				queryClient.invalidateQueries(["test", input.testId]);
+			onSuccess: async () => {
+				queryClient.invalidateQueries(["test", testId]);
 				queryClient.invalidateQueries(["tests"]);
 			}
 		}

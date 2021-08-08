@@ -1,12 +1,6 @@
 import styled, {css} from "styled-components";
 import Status from "../../../../enum/status";
 
-export const TestStatusesContainer = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
 export const TestStatusContainer = styled.div`
   padding: 1rem;
   display: flex;

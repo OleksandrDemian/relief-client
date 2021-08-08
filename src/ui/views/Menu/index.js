@@ -4,7 +4,7 @@ import {useProjectsContext} from "../../../context/projects";
 import Button from "../../components/Button";
 import {ReactComponent as HomeIcon} from "../../assets/ionicons/home.svg"
 import {ReactComponent as TestsIcon} from "../../assets/ionicons/tests.svg"
-import {ReactComponent as EnvironmentsIcon} from "../../assets/ionicons/environments.svg"
+import {ReactComponent as RepositoriesIcon} from "../../assets/ionicons/repositories.svg"
 
 const MenuItem = ({to, children, ...props}) => (
 	<Button href={to} {...props}>{children}</Button>
@@ -29,9 +29,9 @@ const Menu = () => {
 							<TestsIcon/>
 							<span>Tests</span>
 						</StyleMenuLink>
-						<StyleMenuLink to={`/environments`}>
-							<EnvironmentsIcon/>
-							<span>Environments</span>
+						<StyleMenuLink to={`/repositories`}>
+							<RepositoriesIcon/>
+							<span>Repositories</span>
 						</StyleMenuLink>
 					</>
 				)}
