@@ -30,3 +30,8 @@ It uses CSS-in-JS [styled components](https://styled-components.com/) library
 
 ### Build and deploy
 [Netlify](https://www.netlify.com/)
+
+## Notes
+This project is currently abbandoned.
+
+**See also**: [relief-api](https://github.com/OleksandrDemian/relief-api)
